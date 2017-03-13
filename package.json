@@ -8,5 +8,8 @@
   },
   "author": "magus",
   "license": "MIT",
-  "repository": "magus/hyper-transparent-dynamic"
+  "repository": "magus/hyper-transparent-dynamic",
+  "dependencies": {
+    "parse-color": "^1.0.0"
+  }
 }
