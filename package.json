@@ -1,0 +1,11 @@
+{
+  "name": "hyper-transparent-dynamic",
+  "version": "1.0.0",
+  "description": "dynamically set transparency and vibrancy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "magus",
+  "license": "MIT"
+}
