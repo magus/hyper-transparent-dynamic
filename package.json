@@ -1,6 +1,6 @@
 {
   "name": "hyper-transparent-dynamic",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "dynamically set transparency and vibrancy",
   "main": "index.js",
   "scripts": {
