@@ -1,13 +1,13 @@
 {
   "name": "hyper-transparent-dynamic",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "dynamically set transparency and vibrancy",
   "keywords": [
     "hyper.app",
     "hyper",
     "hyperterm",
-	"transparent",
-	"background"
+    "transparent",
+    "background"
   ],
   "main": "index.js",
   "scripts": {
