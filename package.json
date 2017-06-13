@@ -11,7 +11,8 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "syntax": "node --check *.js",
+    "test": "npm run syntax"
   },
   "author": "magus",
   "license": "MIT",
