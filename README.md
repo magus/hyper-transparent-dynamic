@@ -10,6 +10,16 @@ Compatible with **any** theme, pulls in existing value and adds alpha.
 module.exports = {
   ...
 
+  config: {
+    ...
+
+    hyperTransparentDynamic: {
+      alpha: 0.5 // default 50%
+    },
+
+    ...
+  },
+
   plugins: [
     'hyper-snazzy',
     'hyper-transparent-dynamic',
