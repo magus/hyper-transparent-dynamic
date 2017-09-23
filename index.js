@@ -17,8 +17,12 @@ function makeTransparent(color, alpha = DEFAULT_ALPHA) {
 
 module.exports.onWindow = browserWindow => {
   if (process.platform === 'win32' && os.release().startsWith('10.')) {
-    const vibrancy = require('electron-vibrancy-windows');
-    vibrancy.enableVibrancy(browserWindow);
+    try {
+      const vibrancy = require('electron-vibrancy-windows');
+      vibrancy.enableVibrancy(browserWindow);
+    } catch (err) {
+      console.error(err);
+    }
   } else {
     browserWindow.setVibrancy('dark');
   }
