@@ -151,7 +151,7 @@ ecc-jsbn@~0.1.1:
 
 electron-vibrancy-windows@levrik/electron-vibrancy-windows:
   version "1.0.0"
-  resolved "https://codeload.github.com/levrik/electron-vibrancy-windows/tar.gz/2f972acce98e70f91a99077a464ea3862513e2b4"
+  resolved "https://codeload.github.com/levrik/electron-vibrancy-windows/tar.gz/59d48e4d9bf7f073b4c15e09f3e36fef29109002"
   dependencies:
     bindings "^1.3.0"
     nan "^2.7.0"
