@@ -20,7 +20,7 @@
   "repository": "magus/hyper-transparent-dynamic",
   "dependencies": {
     "electron-rebuild": "^1.6.0",
-    "electron-vibrancy": "levrik/electron-vibrancy-windows",
+    "electron-vibrancy-windows": "levrik/electron-vibrancy-windows",
     "parse-color": "^1.0.0"
   }
 }
