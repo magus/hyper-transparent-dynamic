@@ -18,7 +18,9 @@
   "license": "MIT",
   "repository": "magus/hyper-transparent-dynamic",
   "dependencies": {
-    "electron-vibrancy-windows": "levrik/electron-vibrancy-windows",
     "parse-color": "^1.0.0"
+  },
+  "optionalDependencies": {
+    "electron-vibrancy-windows": "levrik/electron-vibrancy-windows"
   }
 }
