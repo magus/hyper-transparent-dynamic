@@ -12,14 +12,12 @@
   "main": "index.js",
   "scripts": {
     "syntax": "node --check *.js",
-    "test": "npm run syntax",
-    "rebuild": "electron-rebuild --version 1.7.6"
+    "test": "npm run syntax"
   },
   "author": "magus",
   "license": "MIT",
   "repository": "magus/hyper-transparent-dynamic",
   "dependencies": {
-    "electron-rebuild": "^1.6.0",
     "electron-vibrancy-windows": "levrik/electron-vibrancy-windows",
     "parse-color": "^1.0.0"
   }
