@@ -22,8 +22,8 @@ module.exports.onWindow = browserWindow => {
 }
 
 module.exports.decorateConfig = config => {
-  const { alpha, vibrancy } = config[CONFIG_KEY] || {};
+  const { alpha } = config[CONFIG_KEY] || {};
   return Object.assign({}, config, {
-    backgroundColor: vibrancy ? config.backgroundColor : makeTransparent(config.backgroundColor, alpha),
+    backgroundColor: makeTransparent(config.backgroundColor, alpha),
   });
 };
