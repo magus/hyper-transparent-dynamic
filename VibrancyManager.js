@@ -3,7 +3,7 @@ const DEFAULT_COLOR = 'rgba(0, 0, 0, 0.5)';
 const DEFAULT_ALPHA = 0.8;
 const DEFAULT_VIBRANCY = 'dark';
 
-class TransparentManager {
+class VibrancyManager {
   constructor() {
     this.window = null;
     this.config = null;
@@ -27,4 +27,4 @@ class TransparentManager {
   }
 }
 
-module.exports = new TransparentManager();
+module.exports = new VibrancyManager();
