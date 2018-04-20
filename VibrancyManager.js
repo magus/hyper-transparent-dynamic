@@ -1,7 +1,4 @@
 const CONFIG_KEY = 'hyperTransparentVibrancy';
-const DEFAULT_COLOR = 'rgba(0, 0, 0, 0.5)';
-const DEFAULT_ALPHA = 0.8;
-const DEFAULT_VIBRANCY = 'dark';
 
 class VibrancyManager {
   constructor() {
@@ -12,14 +9,16 @@ class VibrancyManager {
   registerApp(app) {
     this.config = app.config.getConfig();
     if (this.window) {
-      const { vibrancy = DEFAULT_VIBRANCY } = this.config[CONFIG_KEY] || {};
+      const { vibrancy } = this.config[CONFIG_KEY] || {};
+      if (!vibrancy) return;
       this.window.setVibrancy(vibrancy);
     }
   }
 
   registerWindow(window) {
     if (this.config) {
-      const { vibrancy = DEFAULT_VIBRANCY } = this.config[CONFIG_KEY] || {};
+      const { vibrancy } = this.config[CONFIG_KEY] || {};
+      if (!vibrancy) return;
       window.setVibrancy(vibrancy);
     } else {
       this.window = window;
