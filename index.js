@@ -1,7 +1,7 @@
 const parse = require('parse-color');
 const vibrancyManager = require('./VibrancyManager');
 
-const CONFIG_KEY = 'hyperTransparentDynamic';
+const CONFIG_KEY = 'hyperTransparentVibrancy';
 const DEFAULT_COLOR = 'rgba(0, 0, 0, 0.5)';
 const DEFAULT_ALPHA = 0.5;
 
