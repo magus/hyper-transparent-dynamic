@@ -1,4 +1,5 @@
 const parse = require('parse-color');
+const transparentManager = require('./TransparentManager');
 
 const CONFIG_KEY = 'hyperTransparentDynamic';
 const DEFAULT_COLOR = 'rgba(0, 0, 0, 0.5)';
@@ -14,7 +15,13 @@ function makeTransparent(color, alpha = DEFAULT_ALPHA) {
   return `rgba(${rgb.join(', ')}, ${alpha})`;
 }
 
-module.exports.onWindow = browserWindow => browserWindow.setVibrancy('dark');
+module.exports.onApp = app => {
+  transparentManager.registerApp(app);
+}
+
+module.exports.onWindow = browserWindow => {
+  transparentManager.registerWindow(browserWindow);
+}
 
 module.exports.decorateConfig = config => {
   const { alpha } = config[CONFIG_KEY] || {};
