@@ -1,32 +1,44 @@
 const parse = require('parse-color');
 
-const vibrancyManager = require('./VibrancyManager');
-
 const CONFIG_KEY = 'hyperTransparentVibrancy';
-const DEFAULT_COLOR = 'rgba(0, 0, 0, 0.8)';
+const DEFAULT_COLOR = 'rgba(250, 250, 250, 0.8)';
 const DEFAULT_ALPHA = 0.8;
+const DEFAULT_VIB = 'light';
 
 function makeTransparent(color, alpha = DEFAULT_ALPHA) {
   if (!color) return DEFAULT_COLOR;
   const { rgb } = parse(color);
+  console.log(rgb)
   if (!rgb) return color;
   return `rgba(${rgb.join(', ')}, ${alpha})`;
 }
 
+let config;
+
 module.exports.onApp = app => {
-  vibrancyManager.registerApp(app);
+  config = app.config.getConfig();
 }
 
 module.exports.onWindow = browserWindow => {
-  vibrancyManager.registerWindow(browserWindow);
-}
-module.exports.onRendererWindow = browserWindow => {
-  vibrancyManager.onRenderWindow(browserWindow);
+  if (config) {
+    const { vibrancy } = config[CONFIG_KEY] || {};
+    if (!vibrancy) return;
+    browserWindow.setVibrancy(vibrancy);
+  } else {
+    browserWindow.setVibrancy(DEFAULT_VIB);
+  }
 }
 
-module.exports.decorateConfig = config => {
-  const { alpha } = config[CONFIG_KEY] || {};
-  return Object.assign({}, config, {
-    backgroundColor: makeTransparent(config.backgroundColor, alpha),
+module.exports.decorateConfig = conf => {
+  config = conf;
+  const { alpha } = conf[CONFIG_KEY] || {};
+  return Object.assign({}, conf, {
+    backgroundColor: makeTransparent(conf.backgroundColor, alpha),
+    css: `
+      ${conf.css || ''}
+      .hyper_main {
+        background-color: ${makeTransparent(conf.backgroundColor, alpha)};
+      }
+    `
   });
 };
