@@ -1,4 +1,4 @@
-const Color = require('color');
+const parse = require('parse-color');
 
 const vibrancyManager = require('./VibrancyManager');
 
@@ -8,9 +8,9 @@ const DEFAULT_ALPHA = 0.5;
 
 function makeTransparent(color, alpha = DEFAULT_ALPHA) {
   if (!color) return DEFAULT_COLOR;
-  const tColor = Color(color).alpha(alpha);
-  if (alpha === 1) return tColor.hex();
-  return '#' + tColor.hex().substr(1) + Math.floor(tColor.alpha() * 255).toString(16);
+  const { rgb } = parse(color);
+  if (!rgb) return color;
+  return `rgba(${rgb.join(', ')}, ${alpha})`;
 }
 
 module.exports.onApp = app => {
@@ -19,6 +19,9 @@ module.exports.onApp = app => {
 
 module.exports.onWindow = browserWindow => {
   vibrancyManager.registerWindow(browserWindow);
+}
+module.exports.onRendererWindow = browserWindow => {
+  vibrancyManager.onRenderWindow(browserWindow);
 }
 
 module.exports.decorateConfig = config => {

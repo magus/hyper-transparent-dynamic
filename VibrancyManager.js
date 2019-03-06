@@ -1,4 +1,13 @@
+const parse = require('parse-color');
+
 const CONFIG_KEY = 'hyperTransparentVibrancy';
+
+function makeTransparent(color, alpha = DEFAULT_ALPHA) {
+  if (!color) return DEFAULT_COLOR;
+  const { rgb } = parse(color);
+  if (!rgb) return color;
+  return `rgba(${rgb.join(', ')}, ${alpha})`;
+}
 
 class VibrancyManager {
   constructor() {
@@ -20,6 +29,16 @@ class VibrancyManager {
       const { vibrancy } = this.config[CONFIG_KEY] || {};
       if (!vibrancy) return;
       window.setVibrancy(vibrancy);
+    } else {
+      this.window = window;
+    }
+  }
+
+  onRenderWindow(window) {
+    if (this.config) {
+      const { alpha } = this.config[CONFIG_KEY] || {};
+      if (!alpha) return;
+      window.setBackgroundColor(makeTransparent(this.config.backgroundColor, alpha));
     } else {
       this.window = window;
     }
