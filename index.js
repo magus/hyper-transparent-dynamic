@@ -3,8 +3,8 @@ const parse = require('parse-color');
 const vibrancyManager = require('./VibrancyManager');
 
 const CONFIG_KEY = 'hyperTransparentVibrancy';
-const DEFAULT_COLOR = 'rgba(0, 0, 0, 0.5)';
-const DEFAULT_ALPHA = 0.5;
+const DEFAULT_COLOR = 'rgba(0, 0, 0, 0.8)';
+const DEFAULT_ALPHA = 0.8;
 
 function makeTransparent(color, alpha = DEFAULT_ALPHA) {
   if (!color) return DEFAULT_COLOR;
