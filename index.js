@@ -19,14 +19,11 @@ module.exports.onApp = app => {
   config = app.config.getConfig();
 }
 
-module.exports.onWindow = browserWindow => {
-  if (config) {
-    const { vibrancy } = config[CONFIG_KEY] || {};
-    if (!vibrancy) return;
-    browserWindow.setVibrancy(vibrancy);
-  } else {
-    browserWindow.setVibrancy(DEFAULT_VIB);
-  }
+module.exports.decorateBrowserOptions = options => {
+  const { vibrancy } = config[CONFIG_KEY] || {};
+  return Object.assign({}, options, {
+    vibrancy,
+  });
 }
 
 module.exports.decorateConfig = conf => {
