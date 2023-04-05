@@ -1,24 +1,41 @@
 const parse = require('parse-color');
 
-const CONFIG_KEY = 'hyperTransparentDynamic';
-const DEFAULT_COLOR = 'rgba(0, 0, 0, 0.5)';
-const DEFAULT_ALPHA = 0.5;
+const CONFIG_KEY = 'hyperTransparentVibrancy';
+const DEFAULT_COLOR = 'rgba(250, 250, 250, 0.8)';
+const DEFAULT_ALPHA = 0.8;
+const DEFAULT_VIB = 'light';
 
 function makeTransparent(color, alpha = DEFAULT_ALPHA) {
   if (!color) return DEFAULT_COLOR;
-
   const { rgb } = parse(color);
-
+  console.log(rgb)
   if (!rgb) return color;
-
   return `rgba(${rgb.join(', ')}, ${alpha})`;
 }
 
-module.exports.onWindow = browserWindow => browserWindow.setVibrancy('dark');
+let config;
 
-module.exports.decorateConfig = config => {
-  const { alpha } = config[CONFIG_KEY] || {};
-  return Object.assign({}, config, {
-    backgroundColor: makeTransparent(config.backgroundColor, alpha),
+module.exports.onApp = app => {
+  config = app.config.getConfig();
+}
+
+module.exports.decorateBrowserOptions = options => {
+  const { vibrancy } = config[CONFIG_KEY] || {};
+  return Object.assign({}, options, {
+    vibrancy,
+  });
+}
+
+module.exports.decorateConfig = conf => {
+  config = conf;
+  const { alpha } = conf[CONFIG_KEY] || {};
+  return Object.assign({}, conf, {
+    backgroundColor: makeTransparent(conf.backgroundColor, alpha),
+    css: `
+      ${conf.css || ''}
+      .hyper_main {
+        background-color: ${makeTransparent(conf.backgroundColor, alpha)};
+      }
+    `
   });
 };
