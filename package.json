@@ -1,7 +1,7 @@
 {
-  "name": "hyper-transparent-dynamic",
-  "version": "1.2.0",
-  "description": "dynamically set transparency and vibrancy",
+  "name": "hyper-transparent-vibrancy",
+  "version": "1.0.6",
+  "description": "dynamically set transparency and vibrancy of hyper window",
   "keywords": [
     "hyper.app",
     "hyper",
@@ -14,9 +14,9 @@
     "syntax": "node --check *.js",
     "test": "npm run syntax"
   },
-  "author": "magus",
+  "author": "Mullvinn",
   "license": "MIT",
-  "repository": "magus/hyper-transparent-dynamic",
+  "repository": "Mullvinn/hyper-transparent-vibrancy",
   "dependencies": {
     "parse-color": "^1.0.0"
   }
